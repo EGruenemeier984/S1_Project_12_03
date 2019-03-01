@@ -27,24 +27,25 @@
       information for the donor
       
 */
+// this sets the donationTotal var to 0.
 var donationTotal = 0;
-
+// this runs the calcsum function on evrey value in the donors array.
 donors.forEach(calcSum);
-
+// this sets the summmaryTable var to HTML that starts a table to hold the information.
 var summaryTable = `<table> <tr><th>Donors</th><td> ${donors.length} </td></tr> <tr><th>Total Donations</th><td>$${donationTotal.toLocaleString()}</td></tr></table>`;
-
+// This sets the summaryTable var to the innerHTML of the donationSummary id on the webpage.
 document.getElementById("donationSummary").innerHTML = summaryTable;
-
+// This sets the majorDonors var equal to the donors array being checked by the function findMajorDonors.
 var majorDonors = donors.filter(findMajorDonors);
-
+// This sorts the majorDonors array using the call back function.
 majorDonors.sort(donorSortDescending);
-
+// This var is set equal to another table holding the major donors info.
 var donorTable = `<table> <caption>Major Donors</caption> <tr> <th>Donation</th><th>Donor ID</th> <th>Date</th><th>Name</th><th>Address</th> <th>Phone</th><th>E-mail</th> </tr>`;
-
+// This runs the call back function write Donor row on evrey value in the majorDonors array.
 majorDonors.forEach(writeDonorRow);
-
+// This adds the ending tag to the table 
 donorTable += "</table>";
-
+// Sets the var donorTable equal to the innerHTML of the donorTable ID.
 document.getElementById("donorTable").innerHTML = donorTable;
 
 function calcSum(donorAmt) {
